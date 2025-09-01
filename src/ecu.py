@@ -1,4 +1,5 @@
 from abc import ABC, abstractmethod
+from src.states import PowerState
 
 class ECU(ABC):
     """
@@ -8,7 +9,7 @@ class ECU(ABC):
         # --- Attributes ---
         self.part_number = part_number
         self.sw_version = software_version
-        self.power_status = "OFF" # Default power status
+        self.power_status = PowerState.OFF
         self.dtcs = [] # Default lock status
 
     @abstractmethod
@@ -18,11 +19,11 @@ class ECU(ABC):
     # --- Methods (Actions) ---
     def power_on(self):
         print(f"ECU {self.part_number}: Powering ON...")
-        self.power_status = "ON"
+        self.power_status = PowerState.ON
 
     def power_off(self):
         print(f"ECU {self.part_number}: Powering OFF...")
-        self.power_status = "OFF"
+        self.power_status = PowerState.OFF
 
     def read_dtcs(self):
         return self.dtcs

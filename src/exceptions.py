@@ -1,0 +1,3 @@
+
+class InvalidStateError(Exception):
+    pass
