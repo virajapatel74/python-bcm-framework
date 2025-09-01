@@ -1,4 +1,4 @@
-# python-bcm-framework
+# Exception Handling
 
 Raising vs. Handling an Error: The Fire Alarm Analogy 🚨
 Think of exceptions like a fire alarm system.
@@ -13,9 +13,9 @@ The try block is where the firefighter goes to work, attempting the risky action
 
 The except block is the plan for what to do when the alarm sounds. The goal is to handle the situation gracefully (e.g., log the error, print a message, try something else) so the whole program doesn't crash.
 
-# Exception Handling Strategies
+## Exception Handling Strategies
 
-## 1. The Nuclear Option: Catch, Log, and Stop 🛑
+### 1. The Nuclear Option: Catch, Log, and Stop 🛑
 This is for critical, unrecoverable errors. If the program cannot possibly continue in a valid state, you should handle the error by logging it and then shutting the program down.
 
 Analogy: The car's brake system fails its self-test. You don't just show a "Brake Error" message and let the person drive. You prevent the car from starting.
@@ -31,7 +31,7 @@ except CriticalError as e:
     print(f"FATAL ERROR: Cannot continue. {e}")
     sys.exit(1) # Exit the program with an error code
 
-## 2. The Check Engine Light: Catch, Log, and Continue ⚠️
+### 2. The Check Engine Light: Catch, Log, and Continue ⚠️
 This is for non-critical, recoverable errors. The program can continue to function, perhaps in a degraded state, but the user or system needs to be notified of the problem. Your lock_doors example falls into this category.
 
 Analogy: The car's outside air temperature sensor fails. The car can still drive safely, but a "Check Engine" light comes on to log the issue.
@@ -44,7 +44,7 @@ except InvalidStateError as e:
     # This action failed, but the whole program can continue.
     print(f"Warning: {e}")
 
-## 3. Passing the Blame: Catch, Clean Up, and Re-raise ⬆️
+### 3. Passing the Blame: Catch, Clean Up, and Re-raise ⬆️
 Sometimes, a function needs to catch an error to perform a specific cleanup action (like closing a file), but it doesn't know how to handle the error itself. In this case, it can perform its cleanup and then re-raise the exception for a higher-level part of the program to handle.
 
 Analogy: The Plumber in a High-Rise 🔧
